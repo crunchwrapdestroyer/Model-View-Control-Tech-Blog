@@ -3,10 +3,10 @@ const loginHandler = async function (e) {
     e.preventDefault()
 
     const usernameEl = document
-        .querySelector('#username-input-login')
+        .getElementById('username-input-login')
         .value.trim();
     const passwordEl = document
-        .querySelector('#password-input-login')
+        .getElementById('password-input-login')
         .value.trim();
 
     const response = await fetch('/api/users/login', {
@@ -17,6 +17,7 @@ const loginHandler = async function (e) {
     }),
     headers: { 'Content-Type': 'application/json' },
   });
+  console.log('Sending data:', { username: usernameEl, password: passwordEl });
 
   if (response.ok) {
     document.location.replace('/');

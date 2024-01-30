@@ -30,7 +30,8 @@ router.post('/login', async (req, res) => {
   try {
     // Find a user by email from the request body
     const userData = await User.findOne({ where: { username: req.body.username }, });
-    console.log(userData)
+    console.log('Received data:', req.body);
+
 
     // If the user is not found, respond with an error message
     if (!userData) {
