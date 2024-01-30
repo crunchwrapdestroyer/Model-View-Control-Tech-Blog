@@ -1,26 +1,14 @@
+// Pseudocode for Express.js middleware functions related to user authentication
 const withGuard = (req, res, next) => {
-  // If the user is not logged in, redirect the request to the login route
+  // Check if the user is not logged in
   if (!req.session.logged_in) {
+    // Redirect the request to the login route
     res.redirect('/login');
   } else {
+    // Continue to the next middleware or route handler
     next();
   }
 };
 
-const apiGuard = (req, res, next) => {
-  if (!req.session.logged_in) {
-    res.status(403).json({ msg: 'you must login to perform this action' });
-  } else {
-    next();
-  }
-};
-
-const withoutGuard = (req, res, next) => {
-  if (!req.session.logged_in) {
-    next();
-  } else {
-    res.redirect('/');
-  }
-};
-
-module.exports = { withGuard, apiGuard, withoutGuard };
+// Export the middleware 
+module.exports = { withGuard };
