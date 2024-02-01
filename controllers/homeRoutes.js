@@ -29,7 +29,7 @@ router.get('/dashboard', withGuard, async (req, res) => {
   try {
     const postData = await Post.findAll({
       where: {
-        userId: req.session.user_id,
+        user_id: req.session.user_id,
       },
     });
 
@@ -47,6 +47,13 @@ router.get('/dashboard', withGuard, async (req, res) => {
 router.get('/signup', (req, res) => {
   try {
     res.render('signup');
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+router.get('/newPost', (req, res) => {
+  try {
+    res.render('newPost');
   } catch (err) {
     res.status(500).json(err);
   }

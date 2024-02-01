@@ -1,1 +1,18 @@
 <h2>DASHBOARD: Display my existing blog posts and option to add a new post </h2>  
+<a href="/newPost" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" id="newPost">+ New Post</a>
+<div class="posts">
+    {{#each posts}}
+        {{#if (isEqual user.id currentUser.id)}}
+            <article class="card">
+                <div class="card-header flex-row justify-space-between">
+                <h2>
+                    <a href="/post/{{id}}">{{title}}</a>
+                </h2>
+                </div>
+                <div class="card-body">
+                {{body}}
+                </div>
+            </article>
+        {{/if}}
+    {{/each}}
+</div>

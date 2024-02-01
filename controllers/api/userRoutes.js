@@ -1,6 +1,6 @@
 // Pseudocode for Express.js route handling user-related actions
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Post } = require('../../models');
 
 // Handle POST requests to create a new user
 router.post('/', async (req, res) => {
@@ -30,8 +30,7 @@ router.post('/login', async (req, res) => {
   try {
     // Find a user by email from the request body
     const userData = await User.findOne({ where: { username: req.body.username }, });
-    console.log('Received data:', req.body);
-
+    console.log('Received data:', req.body);    
 
     // If the user is not found, respond with an error message
     if (!userData) {
@@ -64,6 +63,17 @@ router.post('/login', async (req, res) => {
   } catch (err) {
     // If an error occurs during login, respond with a 400 status code and the error details
     res.status(400).json(err);
+  }
+});
+
+router.post('/api/posts', async (req, res) => {
+  const body = req.body;
+
+  try {
+    const newPost = await Post.create({ ...body, userId: req.session.user_id });
+    res.json(newPost);
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 
