@@ -66,7 +66,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
-router.post('/api/posts', async (req, res) => {
+router.post('/newpost', async (req, res) => {
   const body = req.body;
 
   try {

@@ -17,6 +17,22 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/post/:id', async (req,res) => {
+try {
+  const postId = req.params.id;
+    // Fetch the post by ID from the database
+    const post = await Post.findByPk(postId, {
+      include: [{ model: User, attributes: ['id', 'username'] }],
+    });
+    console.log(post)
+    console.log(post.get({ plain: true }))
+  res.render('post', { post: post.get({ plain: true })});
+} catch (err) {
+  console.error(err);
+    res.status(500).render('error500');
+}
+})
+
 router.get('/login', async (req, res) => {
   try { 
 // data to be requested 

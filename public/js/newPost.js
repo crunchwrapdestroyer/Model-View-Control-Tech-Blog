@@ -6,7 +6,7 @@ const newPost = async function (e) {
     console.log("Title:", title);
     console.log("Body:", body);
   
-      await fetch('/api/posts', {
+      await fetch('/api/users/newpost', {
           method: 'POST',
           body: JSON.stringify({
             title,
