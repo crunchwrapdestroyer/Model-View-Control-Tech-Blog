@@ -35,6 +35,9 @@ On the load page, select "Sign Up" and create an account. Navigate to the Dashbo
 
 Install the dependencies listed below and navigate to localhost:3001 in your browser.
 
+## License
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ## Contribution
 
 Navigate to the [Github repository](https://github.com/crunchwrapdestroyer/Model-View-Control-Tech-Blog) to download the project. To submit changes, create a pull request. Email hillmatt58@gmail.com for inquiries.
