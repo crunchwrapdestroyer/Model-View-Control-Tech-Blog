@@ -6,11 +6,12 @@ router.get('/', withGuard, async (req, res) => {
     try {
       const postData = await Post.findAll({
         where: {
-            user_id: req.session.user_id,
+          userId: req.session.userId,
         },
       });
   
       const posts = postData.map((post) => post.get({ plain: true }));
+      console.log('Fetched Posts:', posts);
       res.render('dashboard', {
           dashboard: true,
           posts,
