@@ -14,9 +14,9 @@ const newPost = async function (e) {
           }),
           headers: { 'Content-Type': 'application/json' },
         });
+        document.location.replace('/dashboard');
   }
         
-        // document.location.replace('/dashboard');
 document    
     .getElementById('new-post-form')
     .addEventListener('submit', newPost)
